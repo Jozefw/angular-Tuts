@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="testies">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="angular.js"></script>
+    <script src="main.js"></script>
+</head>
+
+    <div ng-controller='translator'>
+        <h2 ng-init="filterValue = 'F'">List of Cards</h2>
+        <button ng-click="filterValue = 'F'">F</button>
+        <button ng-click="filterValue = 'O'">O</button>
+        <button ng-click="filterValue = 'T'">T</button>
+
+        <ul>
+        	<!--  Include the inline script via ng-include and give it the same name as the id on the script or create a separate page as a template and just add ng-include -->
+            <li ng-repeat="card in cards | filter:{source:filterValue}">
+            	 {{ card.id }}
+        <br>
+            <b> English Word:</b>{{card.source}}<br>
+            <b> Translation:</b>{{card.target}}
+            </li>
+        </ul>
+    </div>
+    <div ng-controller="QuestionaireController">
+    	<h2>Questions</h2>
+    	<div class="question" ng-repeat="question in questions">
+			<span>{{question.number}}</span>&nbsp;
+			<span>{{question.question}}</span>&nbsp;
+			<span>{{question.type}}</span>
+			<div class="answer" ng-include="question.type +'.html'"></div>
+    	</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="testies">
+<head>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="angular.js"></script>
+	<script src="main.js"></script>
+</head>
+<body ng-controller="testController">
+<p>{{thing}}</p>
+	<form novalidate name ="tester">
+		<input type ="text" placeholder="test1" required ng-model="test1" autofocus name="input1" >
+		{{test1}}
+		<input type ="text" name="input2" placeholder="test2" required ng-model="test2">
+		{{test2}}
+		<button ng-click="run()">RUN</button>
+	</form>
+<!-- you can get the state of the form by naming the form itself and/or the individual fields -->
+<div>Dirty:{{tester.$dirty}}</div>
+<div>Pristine:{{tester.$pristine}}</div>
+<div>Valid:{{tester.$valid}}</div>
+<div>Invalid:{{tester.$invalid}}</div><br>
+<div>Valid:{{tester.input1.$valid}}</div>
+
+</body>
+</html>
